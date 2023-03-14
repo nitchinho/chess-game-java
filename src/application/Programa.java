@@ -1,13 +1,12 @@
 package application;
 
-import jogotabuleiro.Posicao;
+import xadrez.PartidaXadrez;
 
 public class Programa {
 
 	public static void main(String[] args) {
-		Posicao pos = new Posicao (3, 2);
-		System.out.println(pos);
 
+		PartidaXadrez partidaXadrez = new PartidaXadrez();
+		IU.imprimeTabuleiro(partidaXadrez.getPecas());
 	}
-
 }
