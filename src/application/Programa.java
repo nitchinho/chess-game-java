@@ -9,4 +9,4 @@ public class Programa {
 		PartidaXadrez partidaXadrez = new PartidaXadrez();
 		IU.imprimeTabuleiro(partidaXadrez.getPecas());
 	}
-}
+} 

@@ -1,6 +1,5 @@
 package xadrez;
 
-import jogotabuleiro.Posicao;
 import jogotabuleiro.Tabuleiro;
 import xadrez.pecas.Rei;
 import xadrez.pecas.Torre;
@@ -29,8 +28,19 @@ public class PartidaXadrez {
 	}
 	
 	private void SetupInicial() {
-		colocandoNovaPeca('b', 6, new Torre(tabuleiro, Cor.BRANCA));
-		colocandoNovaPeca('e', 8, new Rei(tabuleiro, Cor.PRETA));
-		colocandoNovaPeca('e', 1, new Rei(tabuleiro, Cor.BRANCA));
+		colocandoNovaPeca('c', 1, new Torre(tabuleiro, Cor.BRANCA));
+		colocandoNovaPeca('c', 2, new Torre(tabuleiro, Cor.BRANCA));
+		colocandoNovaPeca('d', 2, new Torre(tabuleiro, Cor.BRANCA));
+		colocandoNovaPeca('e', 2, new Torre(tabuleiro, Cor.BRANCA));
+		colocandoNovaPeca('e', 1, new Torre(tabuleiro, Cor.BRANCA));
+		colocandoNovaPeca('d', 1, new Rei(tabuleiro, Cor.BRANCA));
+		
+		colocandoNovaPeca('c', 7, new Torre(tabuleiro, Cor.PRETA));
+		colocandoNovaPeca('c', 8, new Torre(tabuleiro, Cor.PRETA));
+		colocandoNovaPeca('d', 7, new Torre(tabuleiro, Cor.PRETA));
+		colocandoNovaPeca('e', 7, new Torre(tabuleiro, Cor.PRETA));
+		colocandoNovaPeca('e', 8, new Torre(tabuleiro, Cor.PRETA));
+		colocandoNovaPeca('d', 8, new Rei(tabuleiro, Cor.PRETA));
+		
 	}
 }
