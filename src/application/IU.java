@@ -65,7 +65,7 @@ public class IU {
 			if (peca.getCor() == Cor.BRANCA) {
 				System.out.print(ANSI_WHITE + peca + ANSI_RESET);
 			} else {
-				System.out.print(ANSI_BLUE + peca + ANSI_RESET);
+				System.out.print(ANSI_CYAN + peca + ANSI_RESET);
 			}
 		}
 		System.out.print(" ");
