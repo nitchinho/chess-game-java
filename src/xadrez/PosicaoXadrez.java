@@ -36,4 +36,3 @@ public class PosicaoXadrez {
 			return "" + coluna + linha;
 		}
 }
-

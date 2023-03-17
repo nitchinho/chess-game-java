@@ -26,14 +26,13 @@ public class Posicao {
 		this.coluna = coluna;
 	}
 
-	@Override
-	public String toString() {
-		return linha + ", " + coluna;
-	}
-
 	public void informeValores(int linha, int coluna) {
 		this.linha = linha;
 		this.coluna = coluna;
 	}
-
+	
+	@Override
+	public String toString() {
+		return linha + ", " + coluna;
+	}
 }

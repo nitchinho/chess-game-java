@@ -70,7 +70,6 @@ public class Tabuleiro {
 		if (!existePosicao(posicao)) {
 			throw new TabuleiroException("Posicao nao esta no tabuleiro");
 		}
-			
 		return peca(posicao) != null;
 	}
 }

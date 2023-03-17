@@ -13,9 +13,7 @@ public class Programa {
 	public static void main(String[] args) {
 
 		Scanner sc = new Scanner(System.in);
-
 		PartidaXadrez partidaXadrez = new PartidaXadrez();
-		
 		
 		while (true) {
 			try {
@@ -41,10 +39,7 @@ public class Programa {
 		catch (InputMismatchException e) {
 			System.out.println(e.getMessage());
 			sc.nextLine();
+			}
 		}
-			
-		}
-
-		
 	}
 }

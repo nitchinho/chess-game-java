@@ -80,6 +80,5 @@ public class PartidaXadrez {
 		colocandoNovaPeca('e', 7, new Torre(tabuleiro, Cor.PRETA));
 		colocandoNovaPeca('e', 8, new Torre(tabuleiro, Cor.PRETA));
 		colocandoNovaPeca('d', 8, new Rei(tabuleiro, Cor.PRETA));
-		
-	}
+		}
 }
