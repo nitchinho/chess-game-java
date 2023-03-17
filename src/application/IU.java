@@ -29,6 +29,8 @@ public class IU {
 	public static final String ANSI_PURPLE_BACKGROUND = "\u001B[45m";
 	public static final String ANSI_CYAN_BACKGROUND = "\u001B[46m";
 	public static final String ANSI_WHITE_BACKGROUND = "\u001B[47m";
+
+	
 	
 	public static void limparTela() {
 		System.out.print("\033[H\033[2J");
@@ -41,27 +43,41 @@ public class IU {
 			char coluna = s.charAt(0);
 			int linha = Integer.parseInt(s.substring(1));
 			return new PosicaoXadrez(coluna, linha);
-		} catch (RuntimeException e) {
+		} 	
+		catch (RuntimeException e) {
 			throw new InputMismatchException("Erro lendo a posicao. Valores validos sao de *a1* ate *h8*.");
 		}
 	}
-
 	public static void imprimeTabuleiro(PecaXadrez[][] pecas) {
 		for (int i = 0; i < pecas.length; i++) {
 			System.out.print((8 - i) + " ");
 			for (int j = 0; j < pecas.length; j++) {
-				imprimePeca(pecas[i][j]);
+				imprimePeca(pecas[i][j], false);
 			}
 			System.out.println();
 		}
 		System.out.print("  a b c d e f g h");
-
+	}
+	
+	public static void imprimeTabuleiro(PecaXadrez[][] pecas, boolean[][] movimentosPossiveis) {
+		for (int i = 0; i < pecas.length; i++) {
+			System.out.print((8 - i) + " ");
+			for (int j = 0; j < pecas.length; j++) {
+				imprimePeca(pecas[i][j], movimentosPossiveis[i][j]);
+			}
+			System.out.println();
+		}
+		System.out.print("  a b c d e f g h");
 	}
 
-	private static void imprimePeca(PecaXadrez peca) {
+	private static void imprimePeca(PecaXadrez peca, boolean planodefundo) {
+		if (planodefundo) {
+			System.out.print(ANSI_BLUE_BACKGROUND);
+		}
 		if (peca == null) {
-			System.out.print("-");
-		} else {
+			System.out.print("-" + ANSI_RESET);
+		}
+		else {
 			if (peca.getCor() == Cor.BRANCA) {
 				System.out.print(ANSI_WHITE + peca + ANSI_RESET);
 			} else {
@@ -70,7 +86,5 @@ public class IU {
 		}
 		System.out.print(" ");
 	}
-	
-	
 
 }
