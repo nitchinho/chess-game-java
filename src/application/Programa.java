@@ -18,16 +18,16 @@ public class Programa {
 		while (true) {
 			try {
 				IU.limparTela();
-				IU.imprimeTabuleiro(partidaXadrez.getPecas());
+				IU.imprimePartida(partidaXadrez);
 				System.out.println();
-				System.out.print("Matriz Origem: ");
+				System.out.print("Posicao de Origem: ");
 				PosicaoXadrez origem = IU.lerPosicaoXadrez(sc);
 				
 				boolean[][] movimentosPossiveis = partidaXadrez.movimentosPossiveis(origem);
 				IU.limparTela();
 				IU.imprimeTabuleiro(partidaXadrez.getPecas(), movimentosPossiveis);				
 				System.out.println();
-				System.out.print("Qual Destino: ");
+				System.out.print("Posicao de Destino: ");
 				PosicaoXadrez destino = IU.lerPosicaoXadrez(sc);
 											
 			PecaXadrez pecaCapturada = partidaXadrez.efetuarMovimentoXadrez(origem, destino);
