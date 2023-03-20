@@ -34,8 +34,6 @@ public class IU {
 	public static final String ANSI_CYAN_BACKGROUND = "\u001B[46m";
 	public static final String ANSI_WHITE_BACKGROUND = "\u001B[47m";
 
-	
-	
 	public static void limparTela() {
 		System.out.print("\033[H\033[2J");
 		System.out.flush();
@@ -47,24 +45,29 @@ public class IU {
 			char coluna = s.charAt(0);
 			int linha = Integer.parseInt(s.substring(1));
 			return new PosicaoXadrez(coluna, linha);
-		} 	
-		catch (RuntimeException e) {
+		} catch (RuntimeException e) {
 			throw new InputMismatchException("Erro lendo a posicao. Valores validos sao de *a1* ate *h8*.");
 		}
 	}
-	
+
 	public static void imprimePartida(PartidaXadrez partidaXadrez, List<PecaXadrez> capturada) {
 		imprimeTabuleiro(partidaXadrez.getPecas());
 		System.out.println();
 		imprimePecaCapturada(capturada);
 		System.out.println("------------------");
 		System.out.println("Turno : " + partidaXadrez.getTurno());
-		System.out.println("Aguardando Jogador : " + partidaXadrez.getJogadorAtual());
-		if (partidaXadrez.getCheck()) {
-			System.out.println("Voce esta em cheque! Tah se lascando, hein...");
+		if (!partidaXadrez.getXequeMate()) {
+			System.out.println("Aguardando Jogador : " + partidaXadrez.getJogadorAtual());
+			if (partidaXadrez.getXeque()) {
+				System.out.println("Voce esta em cheque! Tah se lascando, hein...");
+			}
 		}
+		else {
+			System.out.println("CHEQUE-MATE !!!");
+			System.out.println("VENCEDOR: " + partidaXadrez.getJogadorAtual());
 		}
-	
+	}
+
 	public static void imprimeTabuleiro(PecaXadrez[][] pecas) {
 		for (int i = 0; i < pecas.length; i++) {
 			System.out.print((8 - i) + " ");
@@ -75,7 +78,7 @@ public class IU {
 		}
 		System.out.print("  a b c d e f g h");
 	}
-	
+
 	public static void imprimeTabuleiro(PecaXadrez[][] pecas, boolean[][] movimentosPossiveis) {
 		for (int i = 0; i < pecas.length; i++) {
 			System.out.print((8 - i) + " ");
@@ -93,8 +96,7 @@ public class IU {
 		}
 		if (peca == null) {
 			System.out.print("-" + ANSI_RESET);
-		}
-		else {
+		} else {
 			if (peca.getCor() == Cor.BRANCA) {
 				System.out.print(ANSI_WHITE + peca + ANSI_RESET);
 			} else {
@@ -103,9 +105,9 @@ public class IU {
 		}
 		System.out.print(" ");
 	}
-	
+
 	private static void imprimePecaCapturada(List<PecaXadrez> capturada) {
-		List<PecaXadrez> branca = capturada.stream().filter(x -> x.getCor() == Cor.BRANCA).collect(Collectors.toList()); 
+		List<PecaXadrez> branca = capturada.stream().filter(x -> x.getCor() == Cor.BRANCA).collect(Collectors.toList());
 		List<PecaXadrez> preta = capturada.stream().filter(x -> x.getCor() == Cor.PRETA).collect(Collectors.toList());
 		System.out.println();
 		System.out.println("PECAS CAPTURADAS: ");
