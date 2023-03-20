@@ -17,7 +17,7 @@ public class PartidaXadrez {
 	private Tabuleiro tabuleiro;
 	private boolean xeque;
 	private boolean xequemate;
-	
+		
 	private List<Peca> pecasNoTabuleiro = new ArrayList<>();
 	private List<Peca> pecasCapturadas = new ArrayList<>();
 
@@ -84,7 +84,8 @@ public class PartidaXadrez {
 	}
 
 	private Peca fazerMovimento(Posicao origem, Posicao destino) {
-		Peca p = tabuleiro.removerPeca(origem);
+		PecaXadrez p = (PecaXadrez)tabuleiro.removerPeca(origem);
+		p.aumentarContador();
 		Peca pecaCapturada = tabuleiro.removerPeca(destino);
 		tabuleiro.colocarPeca(p, destino);
 		
@@ -96,7 +97,8 @@ public class PartidaXadrez {
 	}
 	
 	private void desfazerMovimento (Posicao origem, Posicao destino, Peca pecaCapturada) {
-		Peca p = tabuleiro.removerPeca(destino);
+		PecaXadrez p = (PecaXadrez)tabuleiro.removerPeca(destino);
+		p.diminuirContador();
 		tabuleiro.colocarPeca(p, origem);
 				
 		if (pecaCapturada !=null) {
