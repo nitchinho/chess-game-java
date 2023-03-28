@@ -22,21 +22,21 @@ public class Bispo extends PecaXadrez{
 		Posicao p = new Posicao(0, 0);
 
 		// above-left
-		p.informeValores(posicao.getLinha() - 1, posicao.getColuna() -1);
+		p.informeValores(posicao.getLinha() -1, posicao.getColuna() -1);
 		while (getTabuleiro().existePosicao(p) && !getTabuleiro().temUmaPeca(p)) {
 			matriz[p.getLinha()][p.getColuna()] = true;
-			p.setLinha(p.getLinha() - 1);
-			p.setColuna(p.getColuna() -1);
+			p.informeValores(p.getLinha() -1, p.getColuna() -1);
+			
 		}
 		if (getTabuleiro().existePosicao(p) && temPecaOponente(p)) {
 			matriz[p.getLinha()][p.getColuna()] = true;
 		}
 
 		// above-right
-		p.informeValores(posicao.getLinha() -1, posicao.getColuna() + 1);
+		p.informeValores(posicao.getLinha() -1, posicao.getColuna() +1);
 		while (getTabuleiro().existePosicao(p) && !getTabuleiro().temUmaPeca(p)) {
 			matriz[p.getLinha()][p.getColuna()] = true;
-			p.setColuna(p.getColuna() - 1);
+			p.informeValores(p.getLinha() -1, p.getColuna() +1);
 		}
 		if (getTabuleiro().existePosicao(p) && temPecaOponente(p)) {
 			matriz[p.getLinha()][p.getColuna()] = true;
@@ -45,9 +45,8 @@ public class Bispo extends PecaXadrez{
 		// below-right
 		p.informeValores(posicao.getLinha() +1, posicao.getColuna() +1);
 		while (getTabuleiro().existePosicao(p) && !getTabuleiro().temUmaPeca(p)) {
-			matriz[p.getLinha()][p.getColuna()]= true;
-			p.setColuna(p.getColuna() +1);
-			p.setLinha(p.getLinha() +1);
+			matriz[p.getLinha()][p.getColuna()] = true;
+			p.informeValores(p.getLinha() +1, p.getColuna() +1);
 		}
 		if (getTabuleiro().existePosicao(p) && temPecaOponente(p)) {
 			matriz[p.getLinha()][p.getColuna()] = true;
@@ -56,9 +55,8 @@ public class Bispo extends PecaXadrez{
 		// below-left
 		p.informeValores(posicao.getLinha() +1, posicao.getColuna() -1);
 		while (getTabuleiro().existePosicao(p) && !getTabuleiro().temUmaPeca(p)) {
-			matriz[p.getLinha()][p.getColuna()]= true;
-			p.setLinha(p.getLinha() +1);
-			p.setColuna(p.getColuna() -1);
+			matriz[p.getLinha()][p.getColuna()] = true;
+			p.informeValores(p.getLinha() +1, p.getColuna() -1);
 		}
 		if (getTabuleiro().existePosicao(p) && temPecaOponente(p)) {
 			matriz[p.getLinha()][p.getColuna()] = true;
